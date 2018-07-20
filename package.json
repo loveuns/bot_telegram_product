@@ -1,0 +1,24 @@
+{
+  "name": "bot_telegram_product",
+  "version": "1.0.0",
+  "description": "for study - auth",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loveuns/bot_telegram_product.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loveuns/bot_telegram_product/issues"
+  },
+  "homepage": "https://github.com/loveuns/bot_telegram_product#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "node-telegram-bot-api": "^0.30.0"
+  }
+}
