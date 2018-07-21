@@ -8,10 +8,10 @@ module.exports = class ProductsContoller {
     }
 
     getList(msg) {
+
+        // dummy data --------
         const chatId    = msg.chat.id
         const text      = '상품목록' 
-
-        // dummy data
         const options = {
             reply_markup: {
                 inline_keyboard: [
@@ -20,47 +20,30 @@ module.exports = class ProductsContoller {
                 ]
             }
         }
+        //---------------------
         this.bot.sendMessage(chatId, text, options)
 
-        // const result = []        
-        // const productList = CloudStorage.getProductList()
-        // productList.forEach(p => {
-        //     result.push(
-        //         [{ text: p.name, callback_data: p.id }]
-        //     )
-        // })
-        // const options = {
-        //     reply_markup: {
-        //         inline_keyboard: result
-        //     }
-        // }
+
     }
     
     handleCallback(msg) {     
         const callbackData      = JSON.parse(msg.data)
         const callbackDataType  = callbackData.type        
 
-        let serviceFn
-        switch(callbackDataType) {
-            case 'detail':
-                serviceFn = this.getDetail
-                break
-            case 'back':
-                serviceFn = this.back
-                break
-            default:
+        let serviceFn = { 
+            'detail': this.getDetail,
+            'back'  : this.back
         }
-        const reply = serviceFn(msg)
+
+        const reply = serviceFn[callbackDataType](msg)
         this.bot.editMessageText(reply.text, reply.options)
     }
 
     getDetail(msg) {
-        const chatId            = msg.message.chat.id
-        const messageId         = msg.message.message_id
         const callbackData      = JSON.parse(msg.data)
         const callbackDataId    = callbackData.id
 
-        // dummy data
+        // dummy data --------
         let text
         switch(callbackDataId) {
             case '1':
@@ -75,26 +58,24 @@ module.exports = class ProductsContoller {
         
         const options = {
             parse_mode      : 'Markdown',
-            chat_id         : chatId,
-            message_id      : messageId,
+            chat_id         : msg.message.chat.id,
+            message_id      : msg.message.message_id,
             reply_markup    : {
                 inline_keyboard: [
                     [{ text: '뒤로 가기', callback_data: JSON.stringify({type: 'back'}) }]
                 ]
             }
         }
+        //---------------------
         return { text, options }
     }
 
     back(msg) {
-        const chatId            = msg.message.chat.id
-        const messageId         = msg.message.message_id
-        const text      = '상품목록' 
-
-        // dummy data
+        // dummy data --------
+        const text      = '상품목록'         
         const options = {            
-            chat_id         : chatId,
-            message_id      : messageId,
+            chat_id         : msg.message.chat.id,
+            message_id      : msg.message.message_id,
             reply_markup: {
                 inline_keyboard: [
                    [{ text: '치킨', callback_data: JSON.stringify({type: 'detail', id: '1'}) }], 
@@ -102,6 +83,7 @@ module.exports = class ProductsContoller {
                 ]
             }
         }
+        //---------------------
         return { text, options }
     }
 }
