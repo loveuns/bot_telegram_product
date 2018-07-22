@@ -32,4 +32,6 @@
 
 ### Commit
 
-- 더미 봇 : [git checkout 3bf4e74](https://github.com/loveuns/bot_telegram_product/tree/3bf4e74327e76ecc17ec170da1e638b6b610322b)
+- 더미 봇 : [git checkout 3bf4e74](https://github.com/loveuns/bot_telegram_product/tree/3bf4e74)
+- DB 데이타로 변경 : [git checkout a1cb895](https://github.com/loveuns/bot_telegram_product/tree/a1cb895) 
+- 리팩토링 - 컨트롤러와 서비스의 분리 : 

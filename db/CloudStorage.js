@@ -8,6 +8,7 @@ admin.initializeApp({
 
 const db          = admin.firestore()
 const productsRef = db.collection('products')
+
 module.exports = class CloudStorage {
 
   // 상품목록 가져오기
