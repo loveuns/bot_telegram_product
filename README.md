@@ -9,7 +9,7 @@
 
 ## 봇 설명
 
-1. 기능: 상품정보를 보여준다. 
+1. 기능   : 상품정보를 보여준다. 
 2. 봇 URL : http://t.me/pipi_product_bot
 3. 작동법
    - /start : 상품목록을 보여준다. 
@@ -21,8 +21,8 @@
 ### Tech
 
 - Node.js (node-telegram-bot-api)
-- 플랫폼: Telegram Bot API
-- 인프라: AWS, docker, Firebase, Redis 
+- 플랫폼 : Telegram Bot API
+- 인프라 : AWS, docker, Firebase, Redis 
 
 ### Reference
 
@@ -32,4 +32,4 @@
 
 ### Commit
 
-- 더미 봇 : 
+- 더미 봇 : [git checkout 3bf4e74](https://github.com/loveuns/bot_telegram_product/tree/3bf4e74327e76ecc17ec170da1e638b6b610322b)

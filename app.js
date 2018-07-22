@@ -8,15 +8,3 @@ const productsController    = new ProductsController(bot)
 bot.onText(/\/start/, productsController.getList)
 bot.on('callback_query', productsController.handleCallback)
 
-        // const result = []        
-        // const productList = CloudStorage.getProductList()
-        // productList.forEach(p => {
-        //     result.push(
-        //         [{ text: p.name, callback_data: p.id }]
-        //     )
-        // })
-        // const options = {
-        //     reply_markup: {
-        //         inline_keyboard: result
-        //     }
-        // }
