@@ -1,9 +1,10 @@
+require('dotenv').config()
 const admin           = require("firebase-admin");
-const serviceAccount  = require("./4-fc-chatbot-93c0a-firebase-adminsdk-q8sqq-4e969dce28.json");
+const serviceAccount  = require(process.env.FIREBASE_KEY_FILE);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://fc-chatbot-93c0a.firebaseio.com"
+    databaseURL: process.env.FIREBASE_DATABASE_URL
 });
 
 const db          = admin.firestore()
@@ -42,6 +43,16 @@ module.exports = class CloudStorage {
     const role = 'general'
     try {
       await userRef.doc(id.toString()).set({ email, password, role })
+      const doc = await userRef.doc(id.toString()).get()
+      return Object.assign({id: doc.id}, doc.data())
+    } catch(err) {
+      throw new Error('error when CloudStorage.addUser')
+    }
+  }
+
+  // 회원정보 가져오기
+  static async getUser(id) {
+    try {
       const doc = await userRef.doc(id.toString()).get()
       return Object.assign({id: doc.id}, doc.data())
     } catch(err) {
