@@ -3,14 +3,13 @@ const BotUtil           = require('../utils/BotUtil')
 
 
 module.exports = class ProductsService {
-
     constructor() {
         this.getList    = this.getList.bind(this);
         this.back       = this.back.bind(this);
       }
 
 
-    // /start /list => 상품목록 보여주기
+    // 상품목록 보여주기
     async getList(msg) {
         const chatId    = BotUtil.getChatId(msg)
         const text      = '상품목록'
@@ -31,7 +30,7 @@ module.exports = class ProductsService {
         try {
             products = await CloudStorage.getList()
         } catch(err) {
-            throw new Error('error when ProductsContoller.getList') 
+            throw new Error('error when ProductsService.getList') 
         }
 
         const options = {
@@ -41,11 +40,11 @@ module.exports = class ProductsService {
         }
         //-----------------------
 
-        return { chatId, text, options }
+        return {chatId, text, options}
     }
 
 
-    // 인라인 키보드 응답 - 상품 상세정보 보여주기
+    // 인라인 키보드 버튼 처리 (상품 버튼) => 상품 상세정보 보여주기
     async getDetail(msg) {
         const callbackData      = BotUtil.parseCallbackData(msg)
         const callbackDataId    = callbackData.id
@@ -69,7 +68,7 @@ module.exports = class ProductsService {
         try {
             product = await CloudStorage.getDetail(callbackDataId)            
         } catch(err) {
-            throw new Error('error when ProductsContoller.getDetail')
+            throw new Error('error when ProductsService.getDetail')
         }
 
         const text = `**${product.name}** ${product.price}원
@@ -87,11 +86,11 @@ module.exports = class ProductsService {
             }
         }
 
-        return { text, options }
+        return {text, options}
     }
 
 
-    // 인라인 키보드 응답 - 뒤로가기(상품목록 보여주기)
+    // 인라인 키보드 버튼 처리 (뒤로가기 버튼) => 상품목록 보여주기
     async back(msg) {
         const text      = '상품목록'  
 
@@ -113,7 +112,7 @@ module.exports = class ProductsService {
         try {
             products = await CloudStorage.getList()
         } catch(err) {
-            throw new Error('error when ProductsContoller.back') 
+            throw new Error('error when ProductsService.back') 
         }
 
         const options = {
@@ -125,7 +124,7 @@ module.exports = class ProductsService {
         }
         //-----------------------          
 
-        return { text, options }
+        return {text, options}
     }
 
 

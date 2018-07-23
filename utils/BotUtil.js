@@ -20,5 +20,12 @@ module.exports = class BotUtil {
         return msg.message.message_id
     }
 
+    static getUserMsg(msg) {
+        return msg.text.split(' ').slice(1)
+    }
+
+    static getUserId(msg) {
+        return msg.from.id
+    }
 
 }

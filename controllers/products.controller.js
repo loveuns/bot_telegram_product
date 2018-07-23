@@ -1,6 +1,5 @@
 const ProductsService = require('../services/products.service')
 const BotUtil         = require('../utils/BotUtil')
-
 const productsService = new ProductsService()
 
 module.exports = class ProductsContoller {
@@ -10,17 +9,17 @@ module.exports = class ProductsContoller {
         this.handleCallback = this.handleCallback.bind(this)
     }
 
-    // /start /list => 상품목록 보여주기
+    // 커맨드 처리 (/start, /list) => 상품목록 보여주기
     async getList(msg) {
         try {
-            const reply = await productsService.getList(msg)
-            this.bot.sendMessage(reply.chatId, reply.text, reply.options)
+            const {chatId, text, options} = await productsService.getList(msg)
+            this.bot.sendMessage(chatId, text, options)
         } catch(err) {
             throw err
         }
     }
    
-    // 인라인 키보드 응답 처리하기 
+    // 인라인 키보드 버튼 처리 
     async handleCallback(msg) {     
         const callbackData      = BotUtil.parseCallbackData(msg)
         const callbackDataType  = callbackData.type        
@@ -31,8 +30,8 @@ module.exports = class ProductsContoller {
         }
 
         try {
-            const reply = await serviceFn[callbackDataType](msg)
-            this.bot.editMessageText(reply.text, reply.options)                
+            const {text, options} = await serviceFn[callbackDataType](msg)
+            this.bot.editMessageText(text, options)                
         } catch(err) {
             throw err
         }
