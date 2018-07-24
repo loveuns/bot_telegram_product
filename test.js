@@ -6,9 +6,10 @@ RedisStorage.set('1', 'general')
 RedisStorage.get('1')
 .then(value => console.log(value))
 
-RedisStorage.del('1')
+// RedisStorage.del('1')
+// .then(value => console.log(value))
+
+RedisStorage.get('579276864')
 .then(value => console.log(value))
 
-RedisStorage.get('1')
-.then(value => console.log(value))
 

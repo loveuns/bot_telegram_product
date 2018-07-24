@@ -37,7 +37,9 @@
 
 ### Commit
 
-- 더미 봇 : [git checkout 3bf4e74](https://github.com/loveuns/bot_telegram_product/tree/3bf4e74)
-- DB 데이타로 변경 : [git checkout a1cb895](https://github.com/loveuns/bot_telegram_product/tree/a1cb895) 
+- 더미 봇                             : [git checkout 3bf4e74](https://github.com/loveuns/bot_telegram_product/tree/3bf4e74)
+- DB 데이타로 변경                    : [git checkout a1cb895](https://github.com/loveuns/bot_telegram_product/tree/a1cb895) 
 - 리팩토링 - 컨트롤러와 서비스의 분리 : [git checkout aaf74a6](https://github.com/loveuns/bot_telegram_product/tree/aaf74a6) 
-- 회원가입 : 
+- 회원가입 - 파이어베이스             : [git checkout f8d8755](https://github.com/loveuns/bot_telegram_product/tree/f8d8755) 
+- 로그인, 로그아웃 - 레디스           : [git checkout aea5fdb](https://github.com/loveuns/bot_telegram_product/tree/aea5fdb)
+- 페이지에 보기권한 추가              :   

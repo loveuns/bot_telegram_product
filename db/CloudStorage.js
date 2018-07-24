@@ -38,17 +38,14 @@ module.exports = class CloudStorage {
     }
   }
 
-  // 회원정보 저장하기
-  static async addUser(id, email, password) {
-    const role = 'general'
-    try {
-      await userRef.doc(id.toString()).set({ email, password, role })
-      const doc = await userRef.doc(id.toString()).get()
-      return Object.assign({id: doc.id}, doc.data())
-    } catch(err) {
-      throw new Error('error when CloudStorage.addUser')
-    }
+ // 회원정보 저장하기
+ static async addUser(id, email, password, role) {
+  try {
+    return await userRef.doc(id.toString()).set({ email, password, role })
+  } catch(err) {
+    throw new Error('error when CloudStorage.addUser')
   }
+}
 
   // 회원정보 가져오기
   static async getUser(id) {

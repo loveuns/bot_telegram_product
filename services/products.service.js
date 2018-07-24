@@ -28,7 +28,11 @@ module.exports = class ProductsService {
         // 2. db data -----------
         let products
         try {
+            // 상품목록 가져오기
             products = await CloudStorage.getList()
+
+            // [{"id":"0q", "price":"12000", "image":"http://", "name":"피자"}, {"id":"0q", ....}]
+            console.log(`ProductsService.getList - products: ${JSON.stringify(products)}`)
         } catch(err) {
             throw new Error('error when ProductsService.getList') 
         }
@@ -66,7 +70,11 @@ module.exports = class ProductsService {
         // 2. db data -----------       
         let product
         try {
-            product = await CloudStorage.getDetail(callbackDataId)            
+            // 상품 상세정보 가져오기
+            product = await CloudStorage.getDetail(callbackDataId)
+
+            // {"id":"0q", "price":"12000", "image":"http://", "name":"피자"}
+            console.log(`ProductsService.getDetail - product: ${JSON.stringify(product)}`)            
         } catch(err) {
             throw new Error('error when ProductsService.getDetail')
         }
@@ -110,7 +118,9 @@ module.exports = class ProductsService {
         // 2. db data -----------       
         let products
         try {
+            // 상품목록 가져오기
             products = await CloudStorage.getList()
+            console.log(`ProductsService.back - products: ${JSON.stringify(products)}`)
         } catch(err) {
             throw new Error('error when ProductsService.back') 
         }
